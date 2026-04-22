@@ -1,0 +1,12 @@
+{
+  "name": "tool_action_lambda",
+  "version": "1.0.0",
+  "description": "Lex fulfillment hook — invokes Bedrock with programmatic tool calling against mock ServiceNow API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.600.0"
+  }
+}

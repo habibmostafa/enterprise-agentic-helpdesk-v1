@@ -1,0 +1,7 @@
+{
+  "name": "chat_ui_lambda",
+  "version": "1.0.0",
+  "description": "Serves the helpdesk chat HTML interface",
+  "main": "index.js"
+}
+

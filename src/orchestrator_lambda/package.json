@@ -1,0 +1,12 @@
+{
+  "name": "orchestrator_lambda",
+  "version": "1.0.0",
+  "description": "Amazon Connect contact flow orchestrator — authenticates callers via Customer Profiles",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-customer-profiles": "^3.600.0"
+  }
+}

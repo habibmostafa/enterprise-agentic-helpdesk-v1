@@ -1,0 +1,41 @@
+*.csv
+*accessKeys*
+
+# Local/private docs
+.local-docs/
+
+# Local demo media
+*.mp4
+
+# Terraform artifacts
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/tfplan
+**/override.tf
+**/override.tf.json
+**/*_override.tf
+**/*_override.tf.json
+
+# Build/package artifacts
+**/.build/
+**/*.zip
+
+# draw.io auto-generated backup PNG / backups
+*.drawio.png
+.$*.bkp
+*.bkp
+
+# Node dependencies
+**/node_modules/
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+
+# Secrets / env
+.env
+.env.*

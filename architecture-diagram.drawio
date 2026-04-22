@@ -1,0 +1,295 @@
+<mxfile host="Electron">
+  <diagram name="Enterprise Agentic Helpdesk" id="arch-diagram">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;strokeColor=none;fillColor=none;fontSize=20;fontStyle=1;fontColor=#232F3E;" value="Enterprise Agentic Helpdesk — Prototype Architecture" vertex="1">
+          <mxGeometry x="490" y="15" width="720" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- WEB CHAT PATH (top, orange)             -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!-- User (Browser) -->
+        <mxCell id="user" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.users;" vertex="1">
+          <mxGeometry x="60" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="User (Browser)" vertex="1">
+          <mxGeometry x="30" y="195" width="110" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="apigw" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1">
+          <mxGeometry x="260" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="apigw_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=10;fontColor=#232F3E;" value="API Gateway&#xa;(HTTP API)" vertex="1">
+          <mxGeometry x="235" y="195" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Chat UI Lambda (GET /) -->
+        <mxCell id="chatui" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1">
+          <mxGeometry x="260" y="60" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="chatui_label" parent="1" style="text;html=1;align=center;fontSize=9;fontColor=#879196;" value="Chat UI Lambda&#xa;(GET / → HTML)" vertex="1">
+          <mxGeometry x="210" y="34" width="140" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Tool Action Lambda -->
+        <mxCell id="toolaction" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1">
+          <mxGeometry x="560" y="140" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="toolaction_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Tool Action Lambda&#xa;(chat + Lex fulfillment&#xa;+ Bedrock tool loop)" vertex="1">
+          <mxGeometry x="480" y="205" width="220" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Bedrock -->
+        <mxCell id="bedrock" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1">
+          <mxGeometry x="810" y="140" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bedrock_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=10;fontColor=#232F3E;" value="Bedrock Converse API&#xa;(Nova Pro v1)" vertex="1">
+          <mxGeometry x="775" y="205" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Guardrail -->
+        <mxCell id="guardrail" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.shield_shield;" vertex="1">
+          <mxGeometry x="980" y="145" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="guardrail_label" parent="1" style="text;html=1;align=center;fontSize=10;fontColor=#DD344C;" value="Bedrock Guardrail&#xa;(PII block)" vertex="1">
+          <mxGeometry x="955" y="200" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Mock ITSM Tools box -->
+        <mxCell id="tools_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8F0;strokeColor=#ED7100;dashed=1;opacity=60;" vertex="1">
+          <mxGeometry x="460" y="290" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tools_title" parent="1" style="text;html=1;align=center;fontSize=10;fontStyle=3;fontColor=#ED7100;" value="Mock ITSM Tools (in-Lambda)" vertex="1">
+          <mxGeometry x="475" y="298" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tools_list" parent="1" style="text;html=1;align=left;fontSize=9;fontColor=#232F3E;" value="• create_incident&#xa;• get_incident_status&#xa;• update_incident&#xa;• escalate_to_agent" vertex="1">
+          <mxGeometry x="490" y="318" width="190" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- VOICE PATH (middle, dark)               -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!-- Caller (Phone) -->
+        <mxCell id="caller" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.users;" vertex="1">
+          <mxGeometry x="60" y="500" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="caller_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Caller (Phone)" vertex="1">
+          <mxGeometry x="30" y="555" width="110" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Amazon Connect -->
+        <mxCell id="connect" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.connect;" vertex="1">
+          <mxGeometry x="260" y="500" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="connect_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=10;fontColor=#232F3E;" value="Amazon Connect&#xa;(TTS greeting flow&#xa;+ phone number live)" vertex="1">
+          <mxGeometry x="220" y="555" width="130" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Orchestrator Lambda (LIVE) -->
+        <mxCell id="orchestrator" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1">
+          <mxGeometry x="460" y="500" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="orchestrator_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=10;fontColor=#232F3E;" value="Orchestrator Lambda&#xa;(caller auth — live)" vertex="1">
+          <mxGeometry x="420" y="555" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Customer Profiles -->
+        <mxCell id="profiles" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.customer_profiles;" vertex="1">
+          <mxGeometry x="660" y="500" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="profiles_label" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=10;fontColor=#232F3E;" value="Customer Profiles&#xa;(caller lookup)" vertex="1">
+          <mxGeometry x="625" y="555" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Lex V2 (NEXT — dashed) -->
+        <mxCell id="lex" parent="1" style="outlineConnect=0;fontColor=#879196;gradientColor=none;fillColor=#879196;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lex;" vertex="1">
+          <mxGeometry x="460" y="630" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lex_label" parent="1" style="text;html=1;align=center;fontSize=10;fontColor=#879196;fontStyle=2;" value="Lex V2 Bot&#xa;(provisioned — NEXT)" vertex="1">
+          <mxGeometry x="420" y="685" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CTR ANALYTICS (bottom)                  -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <mxCell id="kinesis" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.kinesis_data_streams;" vertex="1">
+          <mxGeometry x="260" y="790" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="kinesis_label" parent="1" style="text;html=1;align=center;fontSize=9;fontColor=#8C4FFF;" value="Kinesis Stream" vertex="1">
+          <mxGeometry x="235" y="840" width="95" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="firehose" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.kinesis_firehose;" vertex="1">
+          <mxGeometry x="430" y="790" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="firehose_label" parent="1" style="text;html=1;align=center;fontSize=9;fontColor=#8C4FFF;" value="Firehose" vertex="1">
+          <mxGeometry x="415" y="840" width="75" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="glue" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.glue;" vertex="1">
+          <mxGeometry x="590" y="790" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="glue_label" parent="1" style="text;html=1;align=center;fontSize=9;fontColor=#8C4FFF;" value="Glue Catalog" vertex="1">
+          <mxGeometry x="565" y="840" width="95" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s3" parent="1" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;align=center;html=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1">
+          <mxGeometry x="750" y="790" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_label" parent="1" style="text;html=1;align=center;fontSize=9;fontColor=#8C4FFF;" value="S3 (Parquet)" vertex="1">
+          <mxGeometry x="725" y="840" width="95" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- CTR section label -->
+        <mxCell id="ctr_section" parent="1" style="text;html=1;align=left;fontSize=10;fontStyle=3;fontColor=#8C4FFF;" value="CTR Analytics Pipeline" vertex="1">
+          <mxGeometry x="60" y="795" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- LEGEND                                   -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <mxCell id="legend_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;" vertex="1">
+          <mxGeometry x="1080" y="140" width="310" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" parent="1" style="text;html=1;fontSize=11;fontStyle=1;fontColor=#232F3E;" value="Prototype scope" vertex="1">
+          <mxGeometry x="1095" y="150" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" parent="1" style="text;html=1;fontSize=9;fontColor=#FF9900;" value="━━  Web chat path (live, tested)" vertex="1">
+          <mxGeometry x="1095" y="178" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" parent="1" style="text;html=1;fontSize=9;fontColor=#232F3E;" value="━━  Voice path (live infrastructure)" vertex="1">
+          <mxGeometry x="1095" y="203" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" parent="1" style="text;html=1;fontSize=9;fontColor=#879196;" value="- -  Voice path next step (provisioned)" vertex="1">
+          <mxGeometry x="1095" y="228" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" parent="1" style="text;html=1;fontSize=9;fontColor=#8C4FFF;" value="━━  CTR analytics pipeline (live)" vertex="1">
+          <mxGeometry x="1095" y="253" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" parent="1" style="text;html=1;fontSize=9;fontColor=#DD344C;" value="- -  Guardrail (applied per Bedrock call)" vertex="1">
+          <mxGeometry x="1095" y="278" width="260" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- EDGES                                    -->
+        <!-- ═══════════════════════════════════════ -->
+
+        <!-- User → API GW -->
+        <mxCell id="e1" edge="1" parent="1" source="user" target="apigw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#FF9900;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_label" parent="e1" style="edgeLabel;fontSize=9;fontColor=#FF9900;" value="HTTPS" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- API GW → Chat UI Lambda (GET /) -->
+        <mxCell id="e1b" edge="1" parent="1" source="apigw" target="chatui" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#879196;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1b_label" parent="e1b" style="edgeLabel;fontSize=8;fontColor=#879196;" value="GET /" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="12" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- API GW → Tool Action Lambda (POST /chat) -->
+        <mxCell id="e2" edge="1" parent="1" source="apigw" target="toolaction" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#FF9900;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_label" parent="e2" style="edgeLabel;fontSize=9;fontColor=#FF9900;" value="POST /chat" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Tool Action → Bedrock -->
+        <mxCell id="e3" edge="1" parent="1" source="toolaction" target="bedrock" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#FF9900;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_label" parent="e3" style="edgeLabel;fontSize=9;fontColor=#FF9900;" value="Converse API (loop, max 5)" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="-20" y="-8" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Bedrock → Guardrail (applied per call) -->
+        <mxCell id="e4" edge="1" parent="1" source="bedrock" target="guardrail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#DD344C;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Tool Action → Mock ITSM tools -->
+        <mxCell id="e5" edge="1" parent="1" source="toolaction" target="tools_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#ED7100;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_label" parent="e5" style="edgeLabel;fontSize=8;fontColor=#ED7100;" value="tool_use calls" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="12" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Caller → Connect -->
+        <mxCell id="e6" edge="1" parent="1" source="caller" target="connect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#232F3E;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6_label" parent="e6" style="edgeLabel;fontSize=9;fontColor=#232F3E;" value="Phone call" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Connect → Orchestrator Lambda (NEXT — permission exists, not called from contact flow) -->
+        <mxCell id="e7" edge="1" parent="1" source="connect" target="orchestrator" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#879196;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7_label" parent="e7" style="edgeLabel;fontSize=8;fontColor=#879196;fontStyle=2;" value="NEXT: invoke" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Orchestrator → Customer Profiles -->
+        <mxCell id="e8" edge="1" parent="1" source="orchestrator" target="profiles" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#879196;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8_label" parent="e8" style="edgeLabel;fontSize=8;fontColor=#879196;fontStyle=2;" value="NEXT: phone lookup" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Connect → Lex V2 (NEXT, dashed) -->
+        <mxCell id="e9" edge="1" parent="1" source="connect" target="lex" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#879196;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9_label" parent="e9" style="edgeLabel;fontSize=8;fontColor=#879196;fontStyle=2;" value="NEXT: Get customer input" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="15" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Lex → Tool Action Lambda (NEXT, dashed) -->
+        <mxCell id="e10" edge="1" parent="1" source="lex" target="toolaction" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#879196;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10_label" parent="e10" style="edgeLabel;fontSize=8;fontColor=#879196;fontStyle=2;" value="NEXT: fulfillment" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Connect → Kinesis (CTR) -->
+        <mxCell id="e11" edge="1" parent="1" source="connect" target="kinesis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#8C4FFF;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Kinesis → Firehose -->
+        <mxCell id="e12" edge="1" parent="1" source="kinesis" target="firehose" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#8C4FFF;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Firehose → Glue -->
+        <mxCell id="e13" edge="1" parent="1" source="firehose" target="glue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#8C4FFF;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Glue → S3 -->
+        <mxCell id="e14" edge="1" parent="1" source="glue" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=1;strokeColor=#8C4FFF;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
